@@ -67,6 +67,24 @@ else
         noobstat=""
 fi
 
+function insnoob(){
+service_file="/etc/systemd/system/multi-user.target.wants/noobzvpns.service"
+if [ -e "$service_file" ]; then
+        /root/noobzvpns/./uninstall.sh
+else
+        /root/noobzvpns/./install.sh
+fi
+}
+
+function ensnoob(){
+        status_output=$(systemctl status noobzvpns)
+        if [[ $status_output == *"Active: active (running)"* ]]; then
+                systemctl stop noobzvpns.service
+        else
+                systemctl start noobzvpns.service
+        fi
+}
+
 #====================== Addons =====================
 #1 System Uptime
 uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
@@ -94,6 +112,8 @@ domain=$(cat /etc/lukman/domain)
 #5 IP Server
 IPVPS=$(cat /etc/xray/ip)
 sensored_ip=$(echo $IPVPS | sed 's/\.[0-9]*\.[0-9]*$/.*.*/')
+#=======================================================
+
 
 clear
 echo -e "${NC}======================================"
@@ -126,9 +146,9 @@ case $opt in
 01 | 1) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
 02 | 2) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
 03 | 3) clear ; plugin ;;
-04 | 4) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
-05 | 4) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
-06 | 4) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
+04 | 4) clear ; insnoob ;;
+05 | 4) clear ; ensnoob ;;
+06 | 4) clear ; update ;;
 00 | 0) exit ;;
 *) clear ; menu ;;
 esac
