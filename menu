@@ -78,12 +78,12 @@ menu
 }
 
 function ensnoob(){
-        status_output=$(systemctl status noobzvpns)
-        if [[ $status_output == *"Active: active (running)"* ]]; then
-                systemctl stop noobzvpns.service
-        else
-                systemctl start noobzvpns.service
-        fi
+status_output=$(systemctl status noobzvpns)
+if [[ $status_output == *"Active: active (running)"* ]]; then
+        systemctl stop noobzvpns.service
+else
+        systemctl start noobzvpns.service
+fi
 menu
 }
 
