@@ -14,7 +14,7 @@ wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/update; chmod
 git clone https://github.com/noobz-id/noobzvpns.git
 
 clear
-mkdir -p /etc/lukman
+mkdir -p /etc/lukman/store
 
 echo "$domain" > /etc/lukman/domain
 #echo "$chat_id" > /etc/lukman/chat_id
