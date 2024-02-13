@@ -189,8 +189,8 @@ case $opt in
 02 | 2) clear ; delnoob ;;
 03 | 3) clear ; plugin ;;
 04 | 4) clear ; insnoob ;;
-05 | 4) clear ; ensnoob ;;
-06 | 4) clear ; wget -O update raw.githubusercontent.com/LawVPN/Noobz/main/update; bash update; rm update ;;
+05 | 5) clear ; ensnoob ;;
+06 | 6) clear ; wget -O update raw.githubusercontent.com/LawVPN/Noobz/main/update; bash update; rm update ;;
 00 | 0) exit ;;
 *) clear ; menu ;;
 esac
