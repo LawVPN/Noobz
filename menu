@@ -129,23 +129,24 @@ Username : $usernameNew
 Password : $passNew" > /etc/lukman/store/$usernameNew
 
 clear
-echo -e "
+echo -e "=============================
+|         NoobzVPNs         |
 =============================
-\`|         NoobzVPNs         |\`
-=============================
-\`| Username :\` \`$usernameNew\`
-\`| Password :\` \`$passNew\`
+| Username : $usernameNew
+| Password : $passNew
 ============================="
 read -n 1 -s -r -p "  Press any key to go back"
 menu
 }
 
 function delnoob(){
+clear
 echo -e "${NC}======================================"
 echo -e "|           NOOBZVPNS MENU           |"
 echo -e "======================================"
 noobzvpns --info-all-user | grep '+ ' | awk '{print $2}' | awk 'BEGIN {print "| Nama user:"} {printf "| %d. %s\n", NR, $1}'
-
+echo -e "| -----------------------------------"
+echo -e "| Select one you wanna remove"
 echo -ne "| Username : "; read usernameNew
 echo -e "======================================"
 
