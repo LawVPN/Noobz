@@ -19,10 +19,11 @@ echo "$domain" > /etc/lukman/domain
 #echo "$chat_id" > /etc/lukman/chat_id
 echo "$bot_token" > /etc/lukman/bot_token
 
-
+echo "menu" > /root/.profile
 
 #Addons
 echo -e "#!/bin/bash
 clear" > /usr/bin/c; chmod +x /usr/bin/c
 
 rm setup
+menu
