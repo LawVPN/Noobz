@@ -10,7 +10,7 @@ apt update; apt install -y vnstat nload htop nethogs curl git
 apt upgrade
 cd
 wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/menu; chmod +x /usr/bin/menu
-wget -qO /usr/bin/update raw.githubusercontent.com/LawVPN/Noobz/main/update; chmod +x /usr/bin/update
+#wget -qO /usr/bin/update raw.githubusercontent.com/LawVPN/Noobz/main/update; chmod +x /usr/bin/update
 git clone https://github.com/noobz-id/noobzvpns.git
 
 clear
