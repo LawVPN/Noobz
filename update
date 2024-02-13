@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# February 13th 2024
+clear
+ip=$(curl ipinfo.io/ip); echo "$ip" > /etc/lukman/ip
+city=$(curl ipinfo.io/city); echo "$city" > /etc/lukman/city
+org=$(curl ipinfo.io/org); echo "$org" > /etc/lukman/org
