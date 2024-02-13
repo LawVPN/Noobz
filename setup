@@ -9,8 +9,8 @@ echo -ne "Enter Bot Token : "; read bot_token
 apt update; apt install -y vnstat nload htop nethogs curl
 apt upgrade
 cd
-wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/menu
-chmod +x /usr/bin/menu
+wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/menu; chmod +x /usr/bin/menu
+wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/update; chmod +x /usr/bin/update
 
 clear
 mkdir -p /etc/lukman
