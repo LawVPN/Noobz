@@ -1,0 +1,24 @@
+#!/bin/bash
+clear
+
+echo -e  "Simple profiling for personal use *Leave it blank to skip*"
+echo -ne "Enter Domain  : "; read domain
+#echo -ne "Enter Chat ID : "; read chat_id
+echo -ne "Enter Bot Token : "; read bot_token
+
+apt update; apt install -y vnstat nload htop nethogs curl
+apt upgrade
+cd
+wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/menu
+chmod +x /usr/bin/menu
+
+clear
+mkdir -p /etc/lukman
+
+echo "$domain" > /etc/lukman/domain
+#echo "$chat_id" > /etc/lukman/chat_id
+echo "$bot_token" > /etc/lukman/bot_token
+
+ip=$(curl ipinfo.io/ip); echo "$ip" > /etc/lukman/ip
+city=$(curl ipinfo.io/city); echo "$city" > /etc/lukman/city
+org=$(curl ipinfo.io/org); echo "$org" > /etc/lukman/org
