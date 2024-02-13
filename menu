@@ -118,9 +118,43 @@ function addnoob(){
 echo -e "${NC}======================================"
 echo -e "|           NOOBZVPNS MENU           |"
 echo -e "======================================"
-echo -e "| Username :
+echo -ne "| Username : "; read usernameNew
+echo -ne "| Password : "; read passNew
+echo -e "======================================"
+
+noobzvpns --add-user $usernameNew $passNew 
+
+echo -e "Created SSH Account Successfully
+Username : $usernameNew
+Password : $passNew" > /etc/lukman/store/$usernameNew
+
+clear
+echo -e "
+=============================
+\`|         NoobzVPNs         |\`
+=============================
+\`| Username :\` \`$usernameNew\`
+\`| Password :\` \`$passNew\`
+============================="
+read -n 1 -s -r -p "  Press any key to go back"
+menu
 }
 
+function delnoob(){
+echo -e "${NC}======================================"
+echo -e "|           NOOBZVPNS MENU           |"
+echo -e "======================================"
+noobzvpns --info-all-user | grep '+ ' | awk '{print $2}' | awk 'BEGIN {print "| Nama user:"} {printf "| %d. %s\n", NR, $1}'
+
+echo -ne "| Username : "; read usernameNew
+echo -e "======================================"
+
+noobzvpns --remove-user $usernameNew
+rm /etc/lukman/store/$usernameNew
+
+read -n 1 -s -r -p "  Press any key to go back"
+menu
+}
 
 clear
 echo -e "${NC}======================================"
@@ -150,8 +184,8 @@ echo -ne "Choose option: "; read opt
 #read -n 1 -s -r -p "    Press any key to back on menu"
 
 case $opt in
-01 | 1) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
-02 | 2) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
+01 | 1) clear ; addnoob ;;
+02 | 2) clear ; delnoob ;;
 03 | 3) clear ; plugin ;;
 04 | 4) clear ; insnoob ;;
 05 | 4) clear ; ensnoob ;;
