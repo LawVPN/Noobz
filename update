@@ -5,7 +5,7 @@ clear
 ip=$(curl ipinfo.io/ip); echo "$ip" > /etc/lukman/ip
 city=$(curl ipinfo.io/city); echo "$city" > /etc/lukman/city
 org=$(curl ipinfo.io/org); echo "$org" > /etc/lukman/org
-isp=$(curl -s ipinfo.io/org | cut -d " " -f 2-10 ); echo "$isp" > /etc/lukman/isp
+isp=$(curl ipinfo.io/org); echo "$isp" > /etc/lukman/isp
 
 
 menu
