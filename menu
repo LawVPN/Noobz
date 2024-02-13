@@ -74,6 +74,7 @@ if [ -e "$service_file" ]; then
 else
         /root/noobzvpns/./install.sh
 fi
+menu
 }
 
 function ensnoob(){
@@ -83,6 +84,7 @@ function ensnoob(){
         else
                 systemctl start noobzvpns.service
         fi
+menu
 }
 
 #====================== Addons =====================
