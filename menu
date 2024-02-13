@@ -112,7 +112,7 @@ CITY=$(cat /etc/lukman/city)
 domain=$(cat /etc/lukman/domain)
 
 #5 IP Server
-IPVPS=$(cat /etc/xray/ip)
+IPVPS=$(cat /etc/lukman/ip)
 sensored_ip=$(echo $IPVPS | sed 's/\.[0-9]*\.[0-9]*$/.*.*/')
 #=======================================================
 
