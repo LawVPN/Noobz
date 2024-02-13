@@ -27,4 +27,3 @@ echo -e "#!/bin/bash
 clear" > /usr/bin/c; chmod +x /usr/bin/c
 
 rm setup
-menu
