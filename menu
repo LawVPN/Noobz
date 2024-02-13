@@ -51,29 +51,84 @@ case $opt1 in
 esac
 }
 
+service_file="/etc/systemd/system/multi-user.target.wants/noobzvpns.service"
+
+if [ -e "$service_file" ]; then
+        service_status="Installed"
+
+        status_output=$(systemctl status noobzvpns)
+        if [[ $status_output == *"Active: active (running)"* ]]; then
+                noobstat="Service ${BLUE}Online${NC}"
+        else
+                noobstat="Service ${RED}Offline$NC"
+        fi
+else
+        service_status="Not Installed"
+        noobstat=""
+fi
+
+#====================== Addons =====================
+#1 System Uptime
+uphours=`uptime -p | awk '{print $2,$3}' | cut -d , -f1`
+upminutes=`uptime -p | awk '{print $4,$5}' | cut -d , -f1`
+uptimecek=`uptime -p | awk '{print $6,$7}' | cut -d , -f1`
+cekup=`uptime -p | grep -ow "day"`
+if [ "$cekup" = "day" ]; then
+        isdaily="$uphours $upminutes $uptimecek"
+else
+        isdaily="$uphours $upminutes"
+fi
+
+#2 Memory Usage
+tram=$(free -m | awk 'NR==2 {print $2}')
+uram=$(free -m | awk 'NR==2 {print $3}')
+freeram=$(($tram - $uram))
+
+#3 ISP and City
+ISP=$(cat /etc/lukman/isp | cut -d " " -f 2-10 )
+CITY=$(cat /etc/lukman/city)
+
+#4 Domain
+domain=$(cat /etc/lukman/domain)
+
+#5 IP Server
+IPVPS=$(cat /etc/xray/ip)
+sensored_ip=$(echo $IPVPS | sed 's/\.[0-9]*\.[0-9]*$/.*.*/')
+
 clear
-echo -e "================================"
-echo -e "|        NOOBZVPNS MENU        |"
-echo -e "================================"
-echo -e "| Client Name   : Lukman Priya"
-echo -e "| System Uptime  : "
-echo -e "| Memory Usage   : "
-echo -e "| ISP & City    : "
-echo -e "| Current Domain : "
-echo -e "| IP Server     : "
-echo -e "================================"
-echo -e "| [1] Add User"
-echo -e "| [2] Delete User"
-echo -e "| [3] Plugin Hidessh"
-echo -e "|"
-echo -e "| [0] Exit"
-echo -e "================================"
+echo -e "${NC}======================================"
+echo -e "|           NOOBZVPNS MENU           |"
+echo -e "======================================"
+echo -e "| Client Name    : Lukman Priya"
+echo -e "| System Uptime  : $isdaily"
+echo -e "| Memory Usage   : ${uram}MB / ${tram}MB"
+echo -e "| ISP & City     : $ISP & $CITY"
+echo -e "| Current Domain : $domain"
+echo -e "| IP Server      : $sensored_ip"
+echo -e "| Noobz Status   : $service_status"
+echo -e "| Service Status : $noobstat"
+echo -e "======================================"
+echo -e "| [1] Add User                       |"
+echo -e "| [2] Delete User                    |"
+echo -e "| [3] Plugin Hidessh                 |"
+echo -e "|                                    |"
+echo -e "| [4] Install/Uninstall Noobz        |"
+echo -e "| [5] Enable/Disable Noobz Service   |"
+echo -e "| [6] Update Script                  |"
+echo -e "|                                    |"
+echo -e "| [0] Exit                           |"
+echo -e "======================================"
 echo -ne "Choose option: "; read opt
 
+#read -n 1 -s -r -p "    Press any key to back on menu"
+
 case $opt in
-01 | 1) clear ; echo "soon" ;;
-02 | 2) clear ; echo "soon" ;;
+01 | 1) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
+02 | 2) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
 03 | 3) clear ; plugin ;;
-00 | 0) clear ; exit ;;
+04 | 4) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
+05 | 4) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
+06 | 4) clear ; echo "soon"; read -n 1 -s -r -p "Press Enter to go back"; menu  ;;
+00 | 0) exit ;;
 *) clear ; menu ;;
 esac
