@@ -19,6 +19,8 @@ echo "$domain" > /etc/lukman/domain
 #echo "$chat_id" > /etc/lukman/chat_id
 echo "$bot_token" > /etc/lukman/bot_token
 
-ip=$(curl ipinfo.io/ip); echo "$ip" > /etc/lukman/ip
-city=$(curl ipinfo.io/city); echo "$city" > /etc/lukman/city
-org=$(curl ipinfo.io/org); echo "$org" > /etc/lukman/org
+
+
+#Addons
+echo -e "#!/bin/bash
+clear" > /usr/bin/c; chmod +x /usr/bin/c
