@@ -1,0 +1,79 @@
+#!/bin/bash
+clear
+
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+NC='\033[1;37m'
+
+function inshide(){
+wget -qO /usr/local/bin/add-ssh-user https://raw.githubusercontent.com/LawNetwork/Autoscript/main/hidessh/Noobzvpns/add-ssh-user
+wget -qO /usr/local/bin/del-ssh-user https://raw.githubusercontent.com/LawNetwork/Autoscript/main/hidessh/Noobzvpns/del-ssh-user
+chmod +x /usr/local/bin/add-ssh-user
+chmod +x /usr/local/bin/del-ssh-user
+plugin
+}
+
+function unshide(){
+if [ -e "$file_path" ]; then
+        rm /usr/local/bin/add-ssh-user
+else
+        :
+fi
+plugin
+}
+
+function plugin(){
+clear
+file_path="/usr/local/bin/add-ssh-user"
+
+if [ -e "$file_path" ]; then
+    onoff="$NC[${BLUE}ON$NC]  "
+else
+    onoff="$NC[${RED}OFF$NC] "
+fi
+echo -e "================================"
+echo -e "|         PLUGINS MENU         |"
+echo -e "================================"
+echo -e "| Status $onoff                |"
+echo -e "| ---------------------------- |"
+echo -e "| [1] Install Plugins          |"
+echo -e "| [2] Uninstall Plugins        |"
+echo -e "|                              |"
+echo -e "| [0] Back to menu             |"
+echo -e "================================"
+echo -ne "Choose option: "; read opt1
+
+case $opt1 in
+01 | 1) inshide ;;
+02 | 2) unshide ;;
+00 | 0) clear ; menu ;;
+*) clear ; menu ;;
+esac
+}
+
+clear
+echo -e "================================"
+echo -e "|        NOOBZVPNS MENU        |"
+echo -e "================================"
+echo -e "| Client Name   : Lukman Priya"
+echo -e "| System Uptime  : "
+echo -e "| Memory Usage   : "
+echo -e "| ISP & City    : "
+echo -e "| Current Domain : "
+echo -e "| IP Server     : "
+echo -e "================================"
+echo -e "| [1] Add User"
+echo -e "| [2] Delete User"
+echo -e "| [3] Plugin Hidessh"
+echo -e "|"
+echo -e "| [0] Exit"
+echo -e "================================"
+echo -ne "Choose option: "; read opt
+
+case $opt in
+01 | 1) clear ; echo "soon" ;;
+02 | 2) clear ; echo "soon" ;;
+03 | 3) clear ; plugin ;;
+00 | 0) clear ; exit ;;
+*) clear ; menu ;;
+esac
