@@ -10,4 +10,13 @@ isp=$(curl ipinfo.io/org); echo "$isp" > /etc/lukman/isp
 # February 15th 2024
 wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/menu
 
+# February 16th 2024
+wget -qO /usr/local/bin/add-ssh-user raw.githubusercontent.com/LawNetwork/Autoscript/main/hidessh/Noobzvpns/add-ssh-user
+wget -qO /usr/local/bin/del-ssh-user raw.githubusercontent.com/LawNetwork/Autoscript/main/hidessh/Noobzvpns/del-ssh-user
+
+
+
+###########################################################
+chmod +x /usr/local/bin/*
 menu
+###########################################################
