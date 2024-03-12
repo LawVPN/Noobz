@@ -152,9 +152,12 @@ echo -e "| Select one you wanna remove"
 echo -ne "| Username : "; read usernameNew
 echo -e "======================================"
 
+if [ -z "$usernameNew" ]; then
+        :
+else
 noobzvpns --remove-user $usernameNew
 rm /etc/lukman/store/$usernameNew
-
+fi
 read -n 1 -s -r -p "  Press any key to go back"
 menu
 }
