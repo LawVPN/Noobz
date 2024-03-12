@@ -1,19 +1,30 @@
 #!/bin/bash
+apt update
 
-# February 13th 2024
+# February 13th, 2024
 clear
 ip=$(curl ipinfo.io/ip); echo "$ip" > /etc/lukman/ip
 city=$(curl ipinfo.io/city); echo "$city" > /etc/lukman/city
 org=$(curl ipinfo.io/org); echo "$org" > /etc/lukman/org
 isp=$(curl ipinfo.io/org); echo "$isp" > /etc/lukman/isp
 
-# February 15th 2024
+# February 15th, 2024
 wget -qO /usr/bin/menu raw.githubusercontent.com/LawVPN/Noobz/main/menu
 
-# February 16th 2024
+# February 16th, 2024
 wget -qO /usr/local/bin/add-ssh-user raw.githubusercontent.com/LawNetwork/Autoscript/main/hidessh/Noobzvpns/add-ssh-user
 wget -qO /usr/local/bin/del-ssh-user raw.githubusercontent.com/LawNetwork/Autoscript/main/hidessh/Noobzvpns/del-ssh-user
 
+# March 12th, 2024
+if ! command -V speedtest &> /dev/null
+then
+  apt remove speedtest speedtest-cli -y
+  apt install curl -y
+  curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | bash
+  apt install speedtest -y
+else
+  echo "Speedtest by OOKLA already installed!"
+fi
 
 
 ###########################################################
