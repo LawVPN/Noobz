@@ -166,7 +166,7 @@ clear
 echo -e "${NC}======================================"
 echo -e "|           NOOBZVPNS MENU           |"
 echo -e "======================================"
-echo -e "| Client Name    : Lukman Priya"
+echo -e "| Client Name    : HIDESSH"
 echo -e "| System Uptime  : $isdaily"
 echo -e "| Memory Usage   : ${uram}MB / ${tram}MB"
 echo -e "| ISP & City     : $ISP & $CITY"
